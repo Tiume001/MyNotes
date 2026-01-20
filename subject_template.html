@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Detail | University Notes</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Highlight.js for code syntax -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>UniNotes</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li class="active"><a href="year1.html"><i class="fa-solid fa-1"></i> Primo Anno</a></li>
+                <li><a href="year2.html"><i class="fa-solid fa-2"></i> Secondo Anno</a></li>
+                <li><a href="year3.html"><i class="fa-solid fa-3"></i> Terzo Anno</a></li>
+                <li><a href="index.html#extras"><i class="fa-solid fa-star"></i> Extra</a></li>
+            </ul>
+            <div class="nav-footer">
+                <a href="https://github.com/mattiascarpa" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:contact@example.com"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-bar">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <a href="year1.html">Primo Anno</a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span id="subjectTitleBreadcrumb">Fondamenti di Informatica</span>
+                </div>
+                <div class="user-profile">
+                    <span>Mattias Carpa</span>
+                    <div class="avatar">MC</div>
+                </div>
+            </header>
+
+            <!-- Subject Hero -->
+            <section class="hero-small">
+                <div class="hero-content">
+                    <h1 id="subjectTitle">Fondamenti di <span class="gradient-text">Informatica</span></h1>
+                    <p id="subjectDesc">Corso introduttivo alla programmazione C++, algoritmi e strutture dati.</p>
+                </div>
+            </section>
+
+            <!-- Two Column Layout -->
+            <div class="subject-layout">
+
+                <!-- Left Column: Main Content -->
+                <div class="subject-main">
+                    <!-- Tabs Navigation -->
+                    <div class="tabs-container">
+                        <button class="tab-btn active" onclick="openTab('notes')"><i
+                                class="fa-regular fa-file-lines"></i> Appunti</button>
+                        <button class="tab-btn" onclick="openTab('timeline')"><i class="fa-solid fa-timeline"></i>
+                            Timeline</button>
+                        <button class="tab-btn" onclick="openTab('projects')"><i class="fa-solid fa-laptop-code"></i>
+                            Progetti</button>
+                        <button class="tab-btn" onclick="openTab('resources')"><i class="fa-solid fa-folder-open"></i>
+                            Risorse</button>
+                    </div>
+
+                    <!-- NOTES TAB -->
+                    <div id="notes" class="tab-content active">
+                        <div class="markdown-content">
+                            <h2>Introduzione ai Puntatori</h2>
+                            <p>I puntatori sono variabili che contengono l'indirizzo di memoria di un'altra variabile.
+                                Sono fondamentali in C++ per la gestione dinamica della memoria.</p>
+
+                            <blockquote>
+                                <p>Un puntatore non inizializzato può puntare a un'area di memoria casuale, causando
+                                    errori gravi (Segmentation Fault).</p>
+                            </blockquote>
+
+                            <h3>Sintassi Base</h3>
+                            <pre><code class="language-cpp">int x = 10;
+int *ptr = &x; // ptr contiene l'indirizzo di x
+
+cout << *ptr; // Stampa 10 (dereferenziazione)</code></pre>
+
+                            <h3>Allocazione Dinamica</h3>
+                            <p>Per allocare memoria nello heap si usa l'operatore <code>new</code>:</p>
+                            <pre><code class="language-cpp">int *arr = new int[10]; // Array di 10 interi
+// ... uso dell'array ...
+delete[] arr; // Importante: liberare la memoria!</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- TIMELINE TAB (New) -->
+                    <div id="timeline" class="tab-content">
+                        <div class="timeline-container">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h4>Settimana 1: Introduzione</h4>
+                                    <p>Architettura di Von Neumann, Binario, Compilazione.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h4>Settimana 2-3: Basi C++</h4>
+                                    <p>Variabili, Cicli, Funzioni, Scope.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot active"></div>
+                                <div class="timeline-content">
+                                    <h4>Settimana 4: Puntatori & Array</h4>
+                                    <p>Aritmetica dei puntatori, allocazione dinamica.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h4>Settimana 5: Strutture Dati</h4>
+                                    <p>Struct, Liste collegate, Alberi binari.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECTS TAB -->
+                    <div id="projects" class="tab-content">
+                        <div class="cards-grid">
+                            <div class="card">
+                                <div class="card-icon"><i class="fa-brands fa-github"></i></div>
+                                <h3>Gestione Biblioteca</h3>
+                                <p>Sistema in C++ per la gestione di prestiti libri usando liste collegate.</p>
+                                <a href="#" class="btn-text">Vedi su GitHub <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                            <div class="card">
+                                <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
+                                <h3>Snake Game</h3>
+                                <p>Implementazione del classico gioco Snake in terminale.</p>
+                                <a href="#" class="btn-text">Vedi Codice <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RESOURCES TAB -->
+                    <div id="resources" class="tab-content">
+                        <h3 class="section-title">Slide & Lezioni</h3>
+                        <div class="resources-list">
+                            <a href="#" class="resource-link">
+                                <div class="resource-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                                <div class="resource-info">
+                                    <h4>Slide 01 - Introduzione</h4>
+                                    <p>PDF - 2.4 MB</p>
+                                </div>
+                                <div class="resource-action"><i class="fa-solid fa-download"></i></div>
+                            </a>
+                            <a href="#" class="resource-link">
+                                <div class="resource-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                                <div class="resource-info">
+                                    <h4>Slide 02 - Tipi di Dato</h4>
+                                    <p>PDF - 1.8 MB</p>
+                                </div>
+                                <div class="resource-action"><i class="fa-solid fa-download"></i></div>
+                            </a>
+                        </div>
+
+                        <h3 class="section-title" style="margin-top: 2rem;">Esami Passati</h3>
+                        <div class="resources-list">
+                            <a href="#" class="resource-link">
+                                <div class="resource-icon"><i class="fa-solid fa-file-zipper"></i></div>
+                                <div class="resource-info">
+                                    <h4>Esercizi Esame 2024</h4>
+                                    <p>ZIP - 5.0 MB</p>
+                                </div>
+                                <div class="resource-action"><i class="fa-solid fa-download"></i></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Sidebar Info -->
+                <aside class="subject-sidebar">
+                    <!-- Course Info Card -->
+                    <div class="info-card">
+                        <h3>Info Corso</h3>
+                        <div class="info-item">
+                            <span class="label">CFU</span>
+                            <span class="value">9</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Semestre</span>
+                            <span class="value">1°</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Professore</span>
+                            <span class="value">Mario Rossi</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Anno</span>
+                            <span class="value">2023/2024</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Card -->
+                    <div class="info-card">
+                        <h3>Il tuo Progresso</h3>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                            <span class="progress-text">75% Completato</span>
+                        </div>
+                        <div class="checklist">
+                            <div class="check-item">
+                                <i class="fa-solid fa-circle-check completed"></i>
+                                <span>Lezioni Seguite</span>
+                            </div>
+                            <div class="check-item">
+                                <i class="fa-solid fa-circle-check completed"></i>
+                                <span>Progetti Consegnati</span>
+                            </div>
+                            <div class="check-item">
+                                <i class="fa-regular fa-circle"></i>
+                                <span>Esame Superato</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="info-card">
+                        <h3>Link Utili</h3>
+                        <ul class="quick-links">
+                            <li><a href="#"><i class="fa-brands fa-github"></i> Repo Corso</a></li>
+                            <li><a href="#"><i class="fa-solid fa-globe"></i> Sito Docente</a></li>
+                            <li><a href="#"><i class="fa-brands fa-telegram"></i> Gruppo Telegram</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show specific tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

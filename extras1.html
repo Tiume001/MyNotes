@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeChall | University Notes</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>MyNotes</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="year1.html"><i class="fa-solid fa-1"></i> Primo Anno</a></li>
+                <li><a href="year2.html"><i class="fa-solid fa-2"></i> Secondo Anno</a></li>
+                <li><a href="year3.html"><i class="fa-solid fa-3"></i> Terzo Anno</a></li>
+                <li class="active"><a href="index.html#extras"><i class="fa-solid fa-star"></i> Extra</a></li>
+            </ul>
+            <div class="nav-footer">
+                <a href="https://github.com/mattiascarpa" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:contact@example.com"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-bar">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <a href="index.html#extras">Extra</a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span>WeChall</span>
+                </div>
+                <div class="user-profile">
+                    <span>Mattia Scarpa</span>
+                    <div class="avatar">MS</div>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="hero-small">
+                <div class="hero-content">
+                    <h1>We <span class="gradient-text">Chall</span></h1>
+                    <p>Sfide di sicurezza informatica e WeChall solutions.</p>
+                </div>
+            </section>
+
+            <!-- WeChall Section -->
+            <section class="wechall-section">
+                <h2><i class="fa-solid fa-flag"></i> WeChall Writeups</h2>
+
+                <!-- 1. Crypto - Caesar I -->
+                <div class="card challenge-card" style="margin-bottom: 2rem;">
+                    <div class="challenge-header">
+                        <h3>Crypto - Caesar I</h3>
+                        <span class="tag tag-completed">Solved</span>
+                    </div>
+                    <div class="challenge-section task-section">
+                        <h4><i class="fa-solid fa-circle-question"></i> Consegna</h4>
+                        <div class="markdown-content">
+                            <p>La cifratura di Cesare (Caesar cipher) è una forma di cifratura a sostituzione, 
+dove ogni lettera nel testo è spostata di un numero fisso di posizioni lungo l'alfabeto.
+Nella sua forma più semplice, ogni lettera è sostituita dalla lettera che si trova un 
+certo numero fisso di posizioni dopo di essa nell'alfabeto.
+Per risolvere il testo cifrato di Cesare, è necessario conoscere il numero di posizioni 
+(noto come "shift") utilizzato per cifrare il testo. Puoi provare tutte le possibili 
+combinazioni di shift fino a quando il testo cifrato ha senso.</p>
+                        </div>
+                    </div>
+                    <div class="challenge-section solution-section">
+                        <h4><i class="fa-solid fa-unlock-keyhole"></i> Soluzione</h4>
+                        <div class="markdown-content">
+                            <p>
+                                Il testo è cifrato con il <strong>cifrario di Cesare</strong>.
+                                Provando tutti gli shift possibili, si scopre che lo
+                                <strong>shift corretto è 7</strong>.
+                            </p>
+
+                            <pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;cctype&gt;
+
+std::string decryptCaesar(const std::string& ciphertext, int shift) {
+    std::string decryptedText;
+
+    for (char c : ciphertext) {
+        if (isalpha(c)) {
+            char base = isupper(c) ? 'A' : 'a';
+            decryptedText += (c - base - shift + 26) % 26 + base;
+        } else {
+            decryptedText += c;
+        }
+    }
+    return decryptedText;
+}
+
+int main() {
+    std::string ciphertext =
+    "AOL XBPJR IYVDU MVE QBTWZ VCLY AOL SHGF 
+    KVN VM JHLZHY HUK FVBY BUPXBL ZVSBAPVU PZ 
+    ILWOYLIMIKNL";
+
+    for (int shift = 1; shift <= 25; ++shift) {
+        std::cout << "Shift " << shift << ": "
+            << decryptCaesar(ciphertext, shift) << std::endl;
+    }
+
+    std::cout << "\nTesto decifrato (shift = 7):\n";
+    std::cout << decryptCaesar(ciphertext, 7) << std::endl;
+
+    return 0;
+}
+                            </code></pre>
+
+                            <div class="solution-output">
+                                THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG OF CAESAR AND YOUR UNIQUE SOLUTION IS BEPHREBFBDGE
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. WWW - Robots -->
+                <div class="card challenge-card" style="margin-bottom: 2rem;">
+                    <div class="challenge-header">
+                        <h3>Training: Crypto - Caesar I</h3>
+                        <span class="tag tag-completed">Solved</span>
+                    </div>
+                    <div class="challenge-section task-section">
+                        <h4><i class="fa-solid fa-circle-question"></i> Consegna</h4>
+                        <div class="markdown-content">
+                            <p>Decifra il messaggio cifrato con ROT13/Cesare.</p>
+                            <pre><code class="language-text">CODE: NYY LBHE ONFR NER ORYBAT GB HF</code></pre>
+                        </div>
+                    </div>
+                    <div class="challenge-section solution-section">
+                        <h4><i class="fa-solid fa-unlock-keyhole"></i> Soluzione</h4>
+                        <div class="markdown-content">
+                            <p>Applicando ROT13 otteniamo:</p>
+                            <div class="solution-output">ALL YOUR BASE ARE BELONG TO US</div>
+                        </div>
+                    </div>
+                </div>
+
+    <!-- AUTH GUARD -->
+    <script type="module" src="auth-guard.js"></script>
+
+</body>
+
+</html>
