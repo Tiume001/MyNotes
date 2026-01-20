@@ -1,4 +1,4 @@
-// Sostituisci G-XXXXXXXXXX con il tuo ID di misurazione di Google Analytics
+// Sostituisci G-XXXXXXXXXX con il tuo ID di misurazione di Google Analyticstt
 const GA_ID = 'G-ZCHVRHTMYD'; 
 
 // Caricamento dinamico dello script ufficiale di Google
