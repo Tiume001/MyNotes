@@ -16,6 +16,8 @@ onAuthStateChanged(auth, (user) => {
         window.location.href = 'auth.html';
     } else {
         console.log('User authenticated:', user.email);
+        // 🔓 Mostra la pagina solo dopo conferma Firebase
+        document.body.classList.remove('auth-loading');
         // Update user info in the UI if needed
         updateUserProfile(user);
     }
