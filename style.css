@@ -1166,3 +1166,7 @@ details.snippet-container[open] summary.snippet-header i.fa-chevron-down {
     color: var(--text-primary);
     border-color: rgba(255, 255, 255, 0.1);
 }
+
+.auth-loading {
+  visibility: hidden;
+}
